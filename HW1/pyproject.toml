@@ -1,0 +1,29 @@
+[project]
+name = "cmsc25750-hw1"
+version = "1.0.0"
+description = "CMSC 25750 Homework 1: LLM Interpretability"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=2.19",
+    "nnsight>=0.3",
+    "numpy>=1.24",
+    "transformers>=4.41",  # Compatible with both 4.x and 5.x (code handles DynamicCache)
+    "torch>=2.0",
+    "matplotlib>=3.7",
+    "pytest>=8.0",
+    "tqdm>=4.60",  # For progress bars in notebook
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.uv]
+package = false
+python-preference = "managed"
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "WARNING"
+addopts = "-s"
+testpaths = ["tests"]
