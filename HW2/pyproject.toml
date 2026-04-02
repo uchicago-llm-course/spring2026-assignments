@@ -1,0 +1,32 @@
+[project]
+name = "cmsc25750-hw2"
+version = "1.0.0"
+description = "CMSC 25750 Homework 2: LLM Alignment"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=2.19",
+    "numpy>=1.24",
+    "transformers>=4.41",
+    "torch>=2.0",
+    "matplotlib>=3.7",
+    "pytest>=8.0",
+    "tqdm>=4.60",
+    "trl>=0.8.0",        # GRPOTrainer
+    "evaluate>=0.4.0",   # ROUGE metric
+    "rouge-score>=0.1",  # ROUGE backend
+    "accelerate>=0.27",  # Required by trl
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.uv]
+package = false
+python-preference = "managed"
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "WARNING"
+addopts = "-s"
+testpaths = ["tests"]
