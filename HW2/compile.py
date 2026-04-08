@@ -255,12 +255,11 @@ if args.section in ['section2', 'all']:
             print(f"  Train loss : {train_loss:.4f}")
 
             # Evaluate: prompt with instruction template, no summary
-            def gen_prompt(article):
-                return format_instruction(article)
+            formatted_val_articles = [format_instruction(art) for art in val_data['article']]
 
             rouge = evaluate_rouge(
                 model, tokenizer,
-                val_data['article'], val_data['highlights'],
+                formatted_val_articles, val_data['highlights'],
                 device, max_new_tokens=80, num_examples=100
             )
             it_results['epoch_rouge'].append(rouge['rouge1'])
